@@ -1,10 +1,12 @@
 tranche
 ===
 
+Expose range of bytes for an underlying file througha FUSE mount point.
+
 Quick Start
 ---
 
-```
+```bash
 git clone https://github.com/abeconnelly/tranche
 cd tranche
 ./cmp.sh
@@ -12,7 +14,7 @@ cd tranche
 ./example/mnt/fileUKKCfH
 ```
 
-```
+```bash
 cat hello.txt
 0123456789012345
 hello, friend...
