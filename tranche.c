@@ -43,6 +43,8 @@
 #include <time.h>
 #include <utime.h>
 
+char *VERSION_STR = "0.1.0";
+
 int tranche_start;
 int tranche_size;
 char *tranche_mountpoint;
@@ -328,19 +330,19 @@ static int tranche_utimens(const char *path, const struct timespec tv[2]) {
 }
 
 static struct fuse_operations tranche_oper = {
-  .init   = tranche_init,
+  .init     = tranche_init,
   .getattr  = tranche_getattr,
   .readdir  = tranche_readdir,
-  .open   = tranche_open,
-  .release = tranche_release,
-  .read   = tranche_read,
-
-  .utimens = tranche_utimens,
+  .open     = tranche_open,
+  .release  = tranche_release,
+  .read     = tranche_read,
+  .utimens  = tranche_utimens,
 };
 
 void show_help() {
-  fprintf(stderr, "tranche [-b begin] [-s size] -f file [-o outfile] [-m mountpoint] [-q] [-h]\n");
-  fprintf(stderr, "options:\n");
+  fprintf(stderr, "Tranche %s, expose bytes from an underlying file through a FUSE mount.\n", VERSION_STR);
+  fprintf(stderr, "Usage: tranche [-b begin] [-s size] -f file [-o outfile] [-m mountpoint] [-q] [-p] [-D] [-h]\n");
+  fprintf(stderr, "Options:\n");
   fprintf(stderr, "  -b begin       start byte position to expose file\n");
   fprintf(stderr, "  -s size        size in bytes to expose\n");
   fprintf(stderr, "  -f file        input file to expose\n");
