@@ -1,6 +1,8 @@
 tranche
 ===
 
+Expose range of bytes for an underlying file througha FUSE mount point.
+
 Quick Start
 ---
 
